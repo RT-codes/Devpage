@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run start-deploy & export FLASK_ENV=development & export FLASK_APP=main.py & npm run start-local & npm --add-python-to-path='true' ",
+    "start": "npm run start-deploy & export FLASK_ENV=development & export FLASK_APP=main.py & npm run start-deploy",
     "start-deploy": "python -m flask run",
     "start-local": "npx tailwindcss -i static/css/styles.css -o static/css/tailwind_styles.css --watch & python main.py",
     "build-css": "npx tailwindcss -i static/css/styles.css -o static/css/tailwind_styles.css"
