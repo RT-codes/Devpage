@@ -1,6 +1,9 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from models import db, Article, User
+import os
+
+os.environ['FLASK_APP'] = 'main'
 
 
 app = Flask(__name__)
