@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:r84jEJX4qmwBLBk4kIFo@containers-us-west-26.railway.app:6403/railway'
 
+
 db.init_app(app)
 with app.app_context():
     db.create_all()
@@ -19,7 +20,6 @@ def index():
 def articles():
     articles = Article.query.all()
     return render_template( 'articles.html', articles=articles )
-
 
 
 if __name__ == '__main__':
