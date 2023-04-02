@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run start-deploy",
-    "start-deploy": "npx tailwindcss -i static/css/styles.css -o static/css/tailwind_styles.css & python -m flask run",
-    "start-local": "npx tailwindcss -i static/css/styles.css -o static/css/tailwind_styles.css --watch & python main.py"
+    "start-deploy": "npx tailwindcss -i static/css/styles.css -o static/css/tailwind_styles.css & python main.py",
+    "start-local": "npx tailwindcss -i static/css/styles.css -o static/css/tailwind_styles.css --watch & python main.py",
+    "build-css": "npx tailwindcss -i static/css/styles.css -o static/css/tailwind_styles.css"
   },
   "keywords": [],
   "author": "",
