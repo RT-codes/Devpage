@@ -65,10 +65,17 @@ class context:
 def index():
     return render_template( 'home.html' )
 
-@app.route('/articles')
-def articles():
-    articles = Article.query.all()
-    return render_template( 'articles.html', articles=articles )
+@app.route('/digital-garden')
+def digital_garden():
+    articles = Article.query.order_by(Article.creationdate.desc()).all()
+    return render_template('digital-garden.html' , articles=articles)
+
+@app.route('/article/<int:id>')
+def article(id):
+    article = Article.query.get(id)
+    return render_template('article.html' , article=article )
+
+
 
 # ------------------ LOGIN ------------------
 
@@ -125,6 +132,51 @@ def load_user(user_id):
     return user_id
 
 # ------------------ CMS ------------------
+
+
+@app.route('/admin-panel')
+@login_required
+def admin_panel():
+    """ Render the admin panel for authenticated users. """
+    articles = Article.query.order_by(Article.creationdate.desc()).all()
+    return render_template('admin-panel.html' , articles=articles)
+
+
+@app.route('/add-article', methods=['GET', 'POST'])
+@login_required
+def add_article():
+    if request.method == 'POST':
+        print(request.form)
+
+        # if the debug checkbox key is not in the request.form dictionary, then it means that the checkbox was not checked
+        if 'debug' not in request.form:
+            article = Article(title=request.form['title'], textcontent=request.form['textcontent'], creationdate=datetime.utcnow())
+            db.session.add(article)
+            db.session.commit()
+            flash('Article added successfully!')
+            return redirect(url_for('index'))
+        else:
+            print('debug mode')
+            print(request.form)
+            return render_template('add-article.html')
+    
+    return render_template('add-article.html')
+
+@app.route('/edit-article/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit_article(id):
+    """ Edit an article from the database. """
+    article = Article.query.get(id)
+    return render_template('edit-article.html' , article=article )
+
+@app.route('/delete-article/<int:id>')
+@login_required
+def delete_article(id):
+    """ Delete an article from the database. """
+    Article.query.filter_by(id=id).delete()
+    db.session.commit()
+    # flash('Article deleted successfully!')
+    return redirect(url_for('admin_panel'))
 
 
 if __name__ == '__main__':
