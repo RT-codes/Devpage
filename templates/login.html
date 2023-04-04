@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div
+    class="flex flex-col justify-center items-center m-16 p-8 bg-white/30  rounded-md shadow-lg backdrop-blur-md border border-gray-200 border-opacity-30">
+
+    <div class=" ">
+        <form id="login-form" method="POST" action="/login" class="flex flex-col justify-evenly h-80">
+            {{ form.csrf_token() }}
+            {{ form.hidden_tag() }}
+            {{ form.username.label }}
+            {{ form.username(class="form-control", placeholder="Username") }}
+            {{ form.password.label }}
+            {{ form.password(class="form-control", placeholder="Password") }}
+            <button type="submit" class="btn btn-primary">Log In</button>
+        </form>
+    </div>
+</div>
+
+{# create a javascript function ajax function that sends the form data with the id: login-form to /login #}
+
+
+{# onsubmit="sendData();" #}
+{#
+<script>
+    function sendData() {
+        event.preventDefault();
+        console.log("SENDING DATA");
+        var form = document.getElementById("login-form");
+        var data = new FormData(form);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "login", true);
+        xhr.send(data);
+    }
+</script> #}
+
+
+
+{% endblock %}
