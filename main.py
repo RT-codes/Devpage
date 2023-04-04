@@ -29,6 +29,38 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
+class context:
+    """
+    This class is used to determine what the user has access to. 
+     - If the user is authenticated then they can see the console and adminNav buttons
+     - If the user is not authenticated then they will not have access to either of these buttons
+    # example usage:
+    contextObject = context( current_user )
+    pageData = {
+        'baseLayer' : "",
+        'UserLayer' : contextObject.GetContext()
+    }
+    """
+    def __init__(self, current_user = None):     
+        self.current_user = current_user
+        # create a list boolean to determine if the console panel should be displayed
+        self.changes = []
+ 
+        if current_user.is_authenticated:
+            self.changes.append('console')
+            self.changes.append('adminNav')
+        else:
+            self.current_user = None
+        
+    def GetContext(self):
+        if(self.current_user != None):
+            if self.current_user.is_authenticated:
+                return self.changes
+            else:
+                return None
+        else:
+            return None
+
 @app.route('/')
 def index():
     return render_template( 'home.html' )
@@ -64,6 +96,14 @@ def login():
                 flash('Invalid username or password')
         return render_template('login.html', form=form)
     return render_template('login.html', form=form)
+
+@login_manager.user_loader
+def load_user(user_id):
+    print('user_id is being loaded')
+    print(user_id)
+    if user_id is not None:
+        user_id = User.query.get(int(user_id))
+    return user_id
 
 # ------------------ CMS ------------------
 
