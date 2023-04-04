@@ -103,7 +103,7 @@ def login():
                 session['user_id'] = user.id
                 login_user(user)
                 print(f"user {username} logged in successfully")
-                return redirect(url_for('admin_panel') ,)
+                return redirect(url_for('admin_panel.html') ,)
             else:
                 flash('Invalid username or password')
         return render_template('login.html', form=form)

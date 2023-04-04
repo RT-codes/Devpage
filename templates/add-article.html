@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<script src="https://cdn.tiny.cloud/1/xvsbpo8e3otd72fjfl38x8cup7l1myaslfsep6b0drt8olff/tinymce/6/tinymce.min.js"
+    referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        width: 900,
+        height: 500,
+        skin: 'oxide-dark',
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+
+<nav id="breadcrumbs" class="w-full flex justify-start items-center mb-8">
+    <div
+        class="flex items-center justify-center text-xl w-16 h-16 m-8 bg-white/30 rounded-md shadow-lg backdrop-blur-md border border-gray-200 border-opacity-30">
+        <a href="/admin-panel" class=" w-full h-full flex items-center justify-center">
+            <i class="fa-solid fa-arrow-left-long"></i>
+        </a>
+    </div>
+
+    <h1 class="font-semibold">
+        Article Editor
+    </h1>
+</nav>
+
+<form id="add-article-form" method="POST" class="w-[80%] flex flex-col justify-start p-8 gap-8">
+    <div
+        class="w-full flex flex-row justify-between gap-8 bg-white/30 p-6 rounded-md shadow-lg backdrop-blur-md border border-gray-200 border-opacity-30">
+        <label for="title" class="font-semibold">Title:</label>
+        <input type="text" name="title" required
+            class="w-full rounded-md p-8 outline-none placeholder-slate-500 font-semibold outline-2 outline-base-style"
+            placeholder="Title of the post:">
+    </div>
+
+    <div
+        class="w-full flex flex-row justify-start gap-8  bg-white/40 p-6 rounded-md shadow-lg backdrop-blur-md border border-gray-200 border-opacity-30">
+        <label for="textcontent" class="font-semibold">Content:</label>
+        <textarea id="article-textarea" name="textcontent"
+            class="w-full collapse rounded-md p-8 outline-none placeholder-slate-500 font-semibold outline-base-style"
+            placeholder="Content of the article"></textarea>
+    </div>
+
+    {# <div class="w-full flex flex-row justify-between gap-8 bg-white/40 p-6 rounded-md shadow-lg backdrop-blur-md border
+        border-gray-200 border-opacity-30">
+        editor
+    </div> #}
+
+    <nav class="w-full flex justify-center items-center gap-8">
+        <div
+            class="w-fit bg-white/30 p-2 rounded-md shadow-lg backdrop-blur-md border border-gray-200 border-opacity-30">
+            <i class="fa-solid fa-circle-plus text-slate-800"></i>
+            <button type="submit" class="font-semibold text-slate-800">Add Article</button>
+        </div>
+        <div
+            class="w-fit bg-white/30 p-2 rounded-md shadow-lg backdrop-blur-md border border-gray-200 border-opacity-30">
+            <input type="checkbox" name="debug" id="debug" class="" />
+            <label for="debug">Debug</label>
+        </div>
+    </nav>
+
+
+</form>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{# get the tailwind_styles.css and set it as a variable #}
+{% set tailwind_styles = url_for('static', filename='css/tailwind_styles.css') %}
+{% set default_styles = url_for('static', filename='css/styles.css') %}
+{# set the tinymce_styles.css and set it as a variable #}
+{% set tinymce_styles = url_for('static', filename='css/tinymce_styles.css') %}
+
+
+
+
+
+
+
+{% block head %}
+<script src="https://cdn.tiny.cloud/1/xvsbpo8e3otd72fjfl38x8cup7l1myaslfsep6b0drt8olff/tinymce/6/tinymce.min.js"
+    referrerpolicy="origin">
+    </script>
+
+<script>
+
+    //get the tinymce css
+
+    tinymce.init({
+        selector: 'textarea',
+        width: 900,
+        height: 500,
+        skin: 'oxide-dark',
+        content_css: '{{ tailwind_styles }},{{ default_styles }} , {{tinymce_styles}}  ',
+    });
+</script>
+{% endblock %}
+
+
+{% block content %}
+
+<div
+    class="w-full flex flex-row justify-center items-center gap-8 bg-white/30 p-6 rounded-md shadow-lg backdrop-blur-md border border-gray-200 border-opacity-30">
+    <h1 class="text-xl font-semibold">{{ article.title }}</h1>
+</div>
+
+<form id="edit-article-form" method="POST" class="w-[80%] flex flex-col justify-start p-8 gap-8">
+    <div
+        class="w-full flex flex-row justify-between gap-8 bg-white/30 p-6 rounded-md shadow-lg backdrop-blur-md border border-gray-200 border-opacity-30">
+        <label for="title" class="font-semibold">Title:</label>
+        <input type="text" name="title" required
+            class="w-full rounded-md p-8 outline-none placeholder-slate-500 font-semibold outline-2 outline-base-style"
+            placeholder="Title of the post:">
+    </div>
+
+    <div
+        class="w-full flex flex-row justify-start gap-8  bg-white/40 p-6 rounded-md shadow-lg backdrop-blur-md border border-gray-200 border-opacity-30">
+        <label for="textcontent" class="font-semibold">Content:</label>
+        <textarea id="article-textarea" name="textcontent"
+            class="w-full collapse rounded-md p-8 outline-none placeholder-slate-500 font-semibold outline-base-style"
+            placeholder="Content of the article">
+            {{ article.textcontent }}
+        </textarea>
+    </div>
+
+    <nav class="w-full flex justify-center items-center gap-8">
+        <div
+            class="w-fit bg-white/30 p-2 rounded-md shadow-lg backdrop-blur-md border border-gray-200 border-opacity-30">
+            <i class="fa-solid fa-circle-plus text-slate-800"></i>
+            <button type="submit" class="font-semibold text-slate-800">Add Article</button>
+        </div>
+        <div
+            class="w-fit bg-white/30 p-2 rounded-md shadow-lg backdrop-blur-md border border-gray-200 border-opacity-30">
+            <input type="checkbox" name="debug" id="debug" class="" />
+            <label for="debug">Debug</label>
+        </div>
+    </nav>
+</form>
+{% endblock %}

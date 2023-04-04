@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{# {% set tinymce_styles = url_for("static", filename="css/tinymce_styles.css")%} #}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<div
+    class="  flex flex-col justify-start items-center m-8 w-[75%] h-[100vh] bg-white/30 rounded-md shadow-lg backdrop-blur-md ">
+
+    <div class="flex flex-row items-start justify-start w-full h-16 text-xl  m-8 p-6 ">
+        <h1 class=" font-semibold">{{article.title}}</h1>
+    </div>
+    {# set a stylesheet around the next div #}
+
+    <div class="flex flex-col w-full justify-start items-start p-8">
+        <p id="textcontent" data="{{ article.textcontent }}">{{ article.textcontent
+            }}</p>
+    </div>
+</div>
+
+
+<script>
+
+    // create me a function that grabs the textcontent div and then grabs the text inside of it which has html tags
+    // then it will replace the innerHTML of the textcontent div with the textcontent
+    //if the page loads, run the function
+    window.onload = replaceHTMLTags();
+
+    function replaceHTMLTags() {
+        let contentEl = document.getElementById('textcontent');
+        let textcontentText = textcontent.getAttribute('data');
+        // parse the textcontentText and replace the html of the textcontent div with actual html
+        contentEl.innerHTML = textcontentText;
+
+        //set the content of a string to the downloaded contents of a url of a stylesheet
+        //then set the style of the contentEl to the stylesheet
+
+
+
+        //set the style of the contentEl to a stylesheet
+
+
+
+    }
+
+</script>
+
+{% endblock %}
