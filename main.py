@@ -77,6 +77,18 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log In')
 
+# logic routes
+@app.route('/layers' , methods=['GET', 'POST'])
+def layers():
+    if request.method == 'GET':
+        contextObject = context( current_user )
+        pageData ={
+            'baseLayer' : "",
+            'UserLayer' : contextObject.GetContext()
+        }
+        return pageData
+    return ""
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -96,6 +108,13 @@ def login():
                 flash('Invalid username or password')
         return render_template('login.html', form=form)
     return render_template('login.html', form=form)
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    session.pop('user_id', None)
+    return redirect(url_for('index'))
 
 @login_manager.user_loader
 def load_user(user_id):
