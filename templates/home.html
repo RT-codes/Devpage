@@ -1,6 +1,85 @@
-{% extends 'base.html' %}
+{% include 'base.html' %}
+
+{% set githubSVG = url_for('static', filename='images/github-mark-white.svg') %}
+
 
 {% block content %}
-<h1>Home</h1>
-<p>Home page content</p>
+
+<div class="flex w-full h-[30rem] justify-start items-start px-36 ">
+    <div class="flex flex-col justify-between items-start w-[40rem] h-60 m-16 p-2 gap-6 ">
+        <div id="intro-text" class="flex relative flex-col gap-1 font-medium text-2xl text-slate-700 {# artsy-block #}">
+            {# <div class="flex flex-row items-end">
+                <p class="font-bold">Hello, I'm</p>
+                <p class="font-extrabold text-5xl ml-3">Rowan Tijsterman</p>
+            </div> #}
+            <p class=" font-medium text-xl text-slate-600 fade-in ">Hi, my name is</p>
+            <p class=" font-medium text-2xl text-slate-600 fade-in ">Rowan Tijsterman</p>
+            <div class="flex flex-row items-center h-16">
+                <p class="flex text-xl font-bold  mr-3 text-slate-600 fade-in"> i'm a </p>
+                <div class="h-8">
+                    <p id="typewriter-effect"
+                        class="typewriter relative font-bold text-6xl text-slate-800 w-auto whitespace-nowrap fade-in-3">
+                    </p>
+                </div>
+            </div>
+        </div>
+        <p class="text-slate-200 font-medium fade-in-3">
+            with a knack for tackling complex challenges.<br>
+            Whether you need a website, app, or custom software solution, I'm here to make it happen with my skills and
+            passion for all things tech.
+        </p>
+        <div class="flex flex-row w-[50rem] justify-start items-center gap-8">
+            <button
+                class="fadein-slide-up bg-white/30 p-4 rounded-sm backdrop-blur-md  border-gray-200 border-opacity-30 hover:shadow-2xl shadow-slate-200 hover:bg-white/40 hover:scale-105 transition-all duration-300">
+                <p class="font-semibold">My story</p>
+            </button>
+            <div class="fadein-slide-up">
+                <a href="https://github.com/RT-codes" target="_blank">
+                    {# icon of github #}
+                    {# <svg src="{{ githubSVG }} " class=" w-[3rem] h-[3rem]"></svg> #}
+                    {# svg with a source of {{ githubSVG }} #}
+                    <img src="{{ githubSVG }}" class="w-12 h-12 p-1">
+
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="w-[20rem]">
+        <img src="{{ url_for('static', filename='images/avatar.png') }}" class=" min-w-[30rem] min-h-[30rem] ">
+    </div>
+</div>
+
+<div
+    class="flex gap-12 w-full h-[20rem] mt-10rem mb-20rem justify-center items-center bg-slate-400/30 backdrop-blur-md ">
+    <div id="fontpage-card"
+        class="glow-border fadein-slide-down-1 fade-in flex flex-col justify-evenly items-center w-1/4 h-[16rem] gap-8 border-solid rounded-lg border-white p-12 bg-slate-400/50 shadow-lg  ">
+        <h1 class="font-semibold text-lg">title card one</h1>
+        <p>
+            Class aptent taciti sociosqu ad
+            litora torquent per conubia nostra, per inceptos himenaeos.
+        </p>
+    </div>
+
+    <div id="fontpage-card"
+        class=" glow-border fadein-slide-down-2 fade-in-2 flex flex-col justify-evenly items-center w-1/4 h-[16rem] gap-8 border-solid rounded-lg border-white p-12 bg-slate-400/50 shadow-lg ">
+        <h1 class="font-semibold text-lg">title card one</h1>
+        <p>
+            Class aptent taciti sociosqu ad
+            litora torquent per conubia nostra, per inceptos himenaeos.
+        </p>
+    </div>
+
+    <div id="fontpage-card"
+        class="glow-border fadein-slide-down-3 fade-in-3 flex flex-col justify-evenly items-center w-1/4 h-[16rem] gap-8 border-solid rounded-lg border-white p-12 bg-slate-400/50 shadow-lg ">
+        <h1 class="font-semibold text-lg">title card one</h1>
+        <p>
+            Class aptent taciti sociosqu ad
+            litora torquent per conubia nostra, per inceptos himenaeos.
+        </p>
+    </div>
+</div>
+
+<div class="mt-10rem h-[20rem]"></div>
+
 {% endblock %}

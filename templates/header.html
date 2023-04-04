@@ -1,0 +1,35 @@
+{% block content %}
+{# shadow-md bg-white/30 backdrop-blur-md w-full #}
+<div id="header"
+    class=" sticky top-0 h-24 flex flex-col md:flex-row justify-between p-6 w-full z-3 transition-all ease-in-out duration-500 z-10">
+    <div class="flex flex-column items-center justify-center h-full p-2 ">
+        <div id="" class="">
+            <h1 id="" class="text-xl font-bold">RT Productions</h1>
+        </div>
+    </div>
+
+    <nav class="flex items-center justify-center h-full p-2">
+        <ul
+            class="flex flex-col md:flex-row p-1 justify-evenly items-center gap-4 md:gap-8 font-medium whitespace-nowrap  min-w-20rem flex-wrap">
+            {# <li class="hover-slide"><a href="{{ url_for('index') }}">Home</a></li> #}
+            <li class="hover-slide"><a href="#">Home</a></li>
+            {# <li class="hover-slide"><a href="{{ url_for('digital_garden') }}">Digital Garden</a></li> #}
+            <li class="hover-slide"><a href="#">Digital Garden</a></li>
+            <li class="hover-slide"><a href="#">About</a></li>
+            <li class="hover-slide"><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "/layers",
+                type: "GET",
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+        });
+    </script>
+</div>
+{% endblock %}

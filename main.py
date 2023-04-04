@@ -9,8 +9,6 @@ os.environ['FLASK_APP'] = 'main'
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:r84jEJX4qmwBLBk4kIFo@containers-us-west-26.railway.app:6403/railway'
-# app.config['SQLALCHEMY_BINDS'] = ''
-
 
 db.init_app(app)
 with app.app_context():
