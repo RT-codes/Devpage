@@ -69,5 +69,6 @@ def login():
 
 
 if __name__ == '__main__':
+    print('running app from main.py function')
     port = int(os.environ.get('PORT', 8000))
     app.run(host='0.0.0.0', port=port)
