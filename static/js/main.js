@@ -36,6 +36,8 @@ jQuery(document).ready(function($) {
   }
 });
 
+// when the page is loaded
+
 // make a typewriter manager function that takes an element and a list of strings
 // the function will then type out the strings in the list by looping through them and calling the typewriter function and passing it the element and the string
 

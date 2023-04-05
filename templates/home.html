@@ -46,15 +46,37 @@
 
     </div>
     <div class="w-[20rem]">
-        <img src="{{ url_for('static', filename='images/avatar.png') }}" class=" min-w-[30rem] min-h-[30rem] ">
+        {# <img src="{{ url_for('static', filename='images/avatar.png') }}" class=" min-w-[30rem] min-h-[30rem] "> #}
     </div>
 </div>
 
 <div
-    class="flex gap-12 w-full h-[20rem] mt-10rem mb-20rem justify-center items-center bg-slate-400/30 backdrop-blur-md ">
+    class="flex gap-12 w-full min-h-[20rem] h-auto mt-10rem mb-20rem justify-center items-center bg-slate-400/30 backdrop-blur-md p-8">
+
     <div id="fontpage-card"
-        class="glow-border fadein-slide-down-1 fade-in flex flex-col justify-evenly items-center w-1/4 h-[16rem] gap-8 border-solid rounded-lg border-white p-12 bg-slate-400/50 shadow-lg  ">
-        <h1 class="font-semibold text-lg">title card one</h1>
+        class="relative glow-border fadein-slide-down-1 fade-in flex flex-col justify-evenly items-center w-1/4 min-h-[16rem] h-auto gap-8 border-solid rounded-lg border-white p-12 bg-slate-400/50 shadow-lg  ">
+        <div class="tilted absolute top-[-4rem] flex  rounded-md">
+            <img src="{{ url_for('static', filename='images/coding1.png') }}" class=" rounded-md bg-contain">
+
+        </div>
+
+        <h1 class="font-semibold text-lg mt-[5rem]">title card one</h1>
+        <p>
+            Class aptent taciti sociosqu ad
+            litora torquent per conubia nostra, per inceptos himenaeos.
+        </p>
+    </div>
+
+
+
+    <div id="fontpage-card"
+        class="relative glow-border fadein-slide-down-2 fade-in-2 flex flex-col justify-evenly items-center w-1/4 min-h-[16rem] h-auto gap-8 border-solid rounded-lg border-white p-12 bg-slate-400/50 shadow-lg ">
+        <div class="tilted absolute top-[-4rem] flex  rounded-md">
+            <img src="{{ url_for('static', filename='images/ui-ux.png') }}" class=" rounded-md bg-contain">
+
+        </div>
+
+        <h1 class="font-semibold text-lg mt-[5rem]">title card one</h1>
         <p>
             Class aptent taciti sociosqu ad
             litora torquent per conubia nostra, per inceptos himenaeos.
@@ -62,22 +84,24 @@
     </div>
 
     <div id="fontpage-card"
-        class=" glow-border fadein-slide-down-2 fade-in-2 flex flex-col justify-evenly items-center w-1/4 h-[16rem] gap-8 border-solid rounded-lg border-white p-12 bg-slate-400/50 shadow-lg ">
-        <h1 class="font-semibold text-lg">title card one</h1>
+        class="relative glow-border fadein-slide-down-3 fade-in-3 flex flex-col justify-evenly items-center w-1/4 min-h-[16rem] h-auto gap-8 border-solid rounded-lg border-white p-12 bg-slate-400/50 shadow-lg  ">
+        <div class="tilted absolute top-[-4rem] flex  rounded-md">
+            <img src="{{ url_for('static', filename='images/coding1.png') }}" class=" rounded-md bg-contain">
+
+        </div>
+
+        <h1 class="font-semibold text-lg mt-[5rem]">title card one</h1>
         <p>
             Class aptent taciti sociosqu ad
             litora torquent per conubia nostra, per inceptos himenaeos.
         </p>
     </div>
 
-    <div id="fontpage-card"
-        class="glow-border fadein-slide-down-3 fade-in-3 flex flex-col justify-evenly items-center w-1/4 h-[16rem] gap-8 border-solid rounded-lg border-white p-12 bg-slate-400/50 shadow-lg ">
-        <h1 class="font-semibold text-lg">title card one</h1>
-        <p>
-            Class aptent taciti sociosqu ad
-            litora torquent per conubia nostra, per inceptos himenaeos.
-        </p>
-    </div>
+
+</div>
+
+<div class="flex flex-col w-full h-[30rem] tiled-bg-1 mt-[4rem]">
+
 </div>
 
 <div class="mt-10rem h-[20rem]"></div>

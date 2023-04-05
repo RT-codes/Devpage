@@ -133,7 +133,6 @@ def load_user(user_id):
 
 # ------------------ CMS ------------------
 
-
 @app.route('/admin-panel')
 @login_required
 def admin_panel():

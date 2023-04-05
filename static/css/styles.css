@@ -10,12 +10,34 @@
     --accent-color: #f7b500;
     --header-bg-color: hsl(210, 10%, 65%);
     --background-img1: url(../images/bg.jpg);
+    /* --background-img2: url(../images/bg2.jpg); */
+    --feature-card-img1: url(../images/coding1.png);
     font-family: 'Poppins', sans-serif;
     --article-font-primary: 'Merriweather', serif;
+
+    --background-tiled-1: url(../images/doodles-tiled.png);
 }
 
 * {
     box-sizing: border-box;
+}
+
+.tiled-bg-1 {
+    background-image: var(--background-tiled-1);
+    background-repeat: repeat;
+    background-size: 500px;
+    background-color: #c4c4c4;
+    background-blend-mode: multiply;
+    /* change the image brightness with a filter */
+    filter: brightness(1.4) saturate(.5);
+}
+
+.tilted {
+    width: 12rem;
+    height: 10rem;
+    transform: perspective(500px) rotateY(-8deg) rotateX(15deg);
+    overflow-anchor: none;
+    /* box-shadow: #171e27; */
 }
 
 /* reset all styles set on #textcontent 's children including any h1,h2,h3 etc codeblocks or other common html elements*/
@@ -98,6 +120,16 @@ h3 {
 body#tinymce {
     background-image: unset;
     /* background-color: white !important; */
+}
+
+feature-card-img1 {
+    display: flex;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 8px;
+    background-image: var(--feature-card-img1);
+    background-size: cover;
+    background-color: #c4c4c4;
 }
 
 
